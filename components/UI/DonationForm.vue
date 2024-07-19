@@ -1,122 +1,224 @@
 <template>
-    <div class="wrapper bg-white p-7 w-[25rem] rounded-lg shadow-lg">
-      <FormKit 
-        type="form" 
-        class="space-y-6" 
-        submit-label="Donate" 
-        :value="{
-          paymentMethod: 'PayPal'
-        }"
-        @submit="submitHandler"
-        :actions="false"
-      >
-        <h2 class="text-3xl font-bold mb-1 font-montserrat text-center" style="color: #40BA21">Make a Donation</h2>
-        <FormKit 
-          type="text" 
-          name="firstName" 
-          id="firstName" 
-          validation="required" 
-          label="First Name" 
+  <div class="wrapper">
+    <Form @submit="submitHandler" class="form">
+      <h2 class="title font-montserrat">Make a Donation</h2>
+      
+      <div class="field">
+        <label for="firstName" class="label font-ibm">First Name</label>
+        <Field
+          name="firstName"
+          as="input"
+          type="text"
           placeholder="First Name"
-          input-class="mt-1 block w-full p-1 font-ibm border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-          label-class="mt-1 block text-sm font-medium font-ibm text-gray-700" 
+          :class="['input', 'font-ibm', { valid: !errors.firstName && values.firstName }]"
         />
+        <ErrorMessage name="firstName" class="error-message font-ibm" />
+      </div>
 
-        <FormKit 
-          type="text" 
-          name="lastName" 
-          id="lastName" 
-          validation="required" 
-          label="Last Name"
+      <div class="field">
+        <label for="lastName" class="label font-ibm">Last Name</label>
+        <Field
+          name="lastName"
+          as="input"
+          type="text"
           placeholder="Last Name"
-          input-class="mt-1 font-ibm block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-          label-class="block font-ibm text-sm font-medium text-gray-700" 
+          :class="['input', 'font-ibm', { valid: !errors.lastName && values.lastName }]"
         />
-        <FormKit 
-          type="email" 
-          name="email" 
-          id="email" 
-          validation="required|email" 
-          label="E-mail"
+        <ErrorMessage name="lastName" class="error-message font-ibm" />
+      </div>
+
+      <div class="field">
+        <label for="email" class="label font-ibm">E-mail</label>
+        <Field
+          name="email"
+          as="input"
+          type="email"
           placeholder="E-mail"
-          input-class="mt-1 font-ibm block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-          label-class="block font-ibm text-sm font-medium text-gray-700" 
+          :class="['input', 'font-ibm', { valid: !errors.email && values.email }]"
         />
-        <FormKit 
-          type="tel" 
-          name="phone" 
-          id="phone" 
-          validation="required|tel" 
-          label="Phone number"
+        <ErrorMessage name="email" class="font-ibm error-message" />
+      </div>
+
+      <div class="field">
+        <label for="phone" class="label font-ibm">Phone number</label>
+        <Field
+          name="phone"
+          as="input"
+          type="tel"
           placeholder="Phone number"
-          input-class="mt-1 font-ibm block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-          label-class="block font-ibm text-sm font-medium text-gray-700" 
+          :class="['input', 'font-ibm', { valid: !errors.phone && values.phone }]"
         />
-        <FormKit 
-          type="number" 
-          name="amount" 
-          id="amount" 
-          validation="required|number" 
-          label="Amount"
+        <ErrorMessage name="phone" class="font-ibm error-message" />
+      </div>
+
+      <div class="field">
+        <label for="amount" class="label font-ibm">Amount</label>
+        <Field
+          name="amount"
+          as="input"
+          type="number"
           placeholder="Please enter your donation amount"
-          input-class="mt-1 font-ibm block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-          label-class="block font-ibm text-sm font-medium text-gray-700" 
+          :class="['input', 'font-ibm', 'green-text', { valid: !errors.amount && values.amount }]"
         />
-        <div>
-          <span class="block text-sm mb-2 italic font-medium font-montserrat text-gray-700">Choose the payment method</span>
-          <FormKit 
-            type="radio" 
-            name="paymentMethod" 
-            :options="paymentMethods"
-            input-class="mr-2"
-            label-class="text-sm mb-1 font-ibm font-medium text-gray-700"
-          />
-        </div>
-        <div>
-          <span class="block text-sm mb-2 italic font-montserrat font-medium text-gray-700">Recurring donation</span>
-          <FormKit 
-            type="radio" 
-            name="recurringDonation" 
-            :options="recurringDonations"
-            input-class="mr-2"
-            label-class="text-sm mb-1 font-ibm font-medium text-gray-700"
-          />
-          
-        </div>
+        <ErrorMessage name="amount" class="error-message font-ibm" />
+      </div>
+
+      <div class="field">
+        <label for="paymentMethod" class="label font-ibm">Choose the payment method</label>
+        <Field
+          name="paymentMethod"
+          as="select"
+          :class="['select', 'font-ibm', { valid: !errors.paymentMethod && values.paymentMethod }]"
+        >
+          <option value="Credit/Debit card">Credit/Debit card</option>
+          <option value="PayPal">PayPal</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+        </Field>
+        <ErrorMessage name="paymentMethod" class="error-message font-ibm" />
+      </div>
+
+      <div class="field full-width">
+        <label for="recurringDonation" class="label font-ibm">Recurring donation</label>
+        <Field
+          name="recurringDonation"
+          as="select"
+          :class="['select', 'font-ibm', { valid: !errors.recurringDonation && values.recurringDonation }]"
+        >
+          <option value="Monthly">Monthly</option>
+          <option value="Quarterly">Quarterly</option>
+          <option value="Yearly">Yearly</option>
+        </Field>
+        <ErrorMessage name="recurringDonation" class="error-message font-ibm" />
+      </div>
+
+      <div class="button-wrapper">
         <UIButton
           btn_type="submit"
           text="Donate"
         />
-      </FormKit>
-    </div>
+      </div>
+    </Form>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useForm, ErrorMessage, Field } from 'vee-validate';
+import * as yup from 'yup';
 
-const form = ref({
-  paymentMethod: 'Credit/Debit card',
-  recurringDonation: 'Monthly',
+const validationSchema = yup.object({
+  firstName: yup.string().required('First Name is required'),
+  lastName: yup.string().required('Last Name is required'),
+  email: yup.string().email('Must be a valid email').required('E-mail is required'),
+  phone: yup.string().required('Phone number is required'),
+  amount: yup.number().required('Amount is required').positive('Must be a positive number'),
+  paymentMethod: yup.string().required('Payment method is required'),
+  recurringDonation: yup.string().required('Recurring donation is required')
 });
 
-const paymentMethods = {
-  card: 'Credit/Debit card',
-  PayPal: 'PayPal',
-  BankTransfer: 'Bank Transfer' 
-};
+const { handleSubmit, values, errors } = useForm({
+  validationSchema,
+});
 
-const recurringDonations = [
-  { value: 'Monthly', label: 'Monthly' },
-  { value: 'Quarterly', label: 'Quarterly' },
-  { value: 'Yearly', label: 'Yearly' },
-];
-
-const submitHandler = (formData) => {
-  console.log(formData);
-};
+const submitHandler = handleSubmit((values) => {
+  console.log(values);
+});
 </script>
 
-<style lang="sass" scoped>
-.dark-mode .wrapper
-  background-color: black
+<style scoped lang="scss">
+.wrapper {
+  background-color: white;
+  padding: 1.75rem;
+  width: 100%;
+  max-width: 48rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.title {
+  grid-column: span 2;
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  text-align: center;
+  color: #40BA21;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4A5568;
+  }
+
+  .input, .select {
+    margin-top: 0.25rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    height: 3rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    &:focus {
+      border-color: #40BA21;
+      box-shadow: 0 0 0 1px #40BA21;
+    }
+    &.valid {
+      border-color: #40BA21;
+    }
+  }
+
+  .error-message {
+    color: #F56565;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+}
+
+.green-text {
+  color: #40BA21;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.select {
+  appearance: none;
+  background-color: white;
+  border: 1px solid #D1D5DB;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  line-height: 1.5;
+  color: #40BA21;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23999" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1em;
+  &:focus {
+    border-color: #40BA21;
+    box-shadow: 0 0 0 1px #40BA21;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.button-wrapper {
+  grid-column: span 2;
+}
+
+.dark-mode .wrapper {
+  background-color: black;
+}
 </style>

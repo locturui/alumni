@@ -100,6 +100,7 @@ declare global {
   const toRaw: typeof import('../../node_modules/vue')['toRaw']
   const toRef: typeof import('../../node_modules/vue')['toRef']
   const toRefs: typeof import('../../node_modules/vue')['toRefs']
+  const toTypedSchema: typeof import('../../node_modules/@vee-validate/yup/dist/vee-validate-yup')['toTypedSchema']
   const toValue: typeof import('../../node_modules/vue')['toValue']
   const triggerRef: typeof import('../../node_modules/vue')['triggerRef']
   const tryUseNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt')['tryUseNuxtApp']
@@ -117,13 +118,27 @@ declare global {
   const useElementScriptTrigger: typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useElementScriptTrigger']
   const useError: typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']
   const useFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']
+  const useField: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useField']
+  const useFieldArray: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldArray']
+  const useFieldError: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldError']
+  const useFieldValue: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldValue']
+  const useForm: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useForm']
+  const useFormErrors: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormErrors']
   const useFormKitContext: typeof import('../../node_modules/@formkit/vue')['useFormKitContext']
   const useFormKitContextById: typeof import('../../node_modules/@formkit/vue')['useFormKitContextById']
   const useFormKitNodeById: typeof import('../../node_modules/@formkit/vue')['useFormKitNodeById']
+  const useFormValues: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormValues']
   const useHead: typeof import('../../node_modules/@unhead/vue')['useHead']
   const useHeadSafe: typeof import('../../node_modules/@unhead/vue')['useHeadSafe']
   const useHydration: typeof import('../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']
   const useId: typeof import('../../node_modules/nuxt/dist/app/composables/id')['useId']
+  const useIsFieldDirty: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldDirty']
+  const useIsFieldTouched: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldTouched']
+  const useIsFieldValid: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldValid']
+  const useIsFormDirty: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormDirty']
+  const useIsFormTouched: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormTouched']
+  const useIsFormValid: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormValid']
+  const useIsSubmitting: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsSubmitting']
   const useLazyAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useLazyAsyncData']
   const useLazyFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']
   const useLink: typeof import('../../node_modules/vue-router/auto-routes')['useLink']
@@ -132,6 +147,7 @@ declare global {
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']
   const useNuxtDevTools: typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']
+  const useOfferStore: typeof import('../../stores/offerStore')['useOfferStore']
   const usePinia: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']
   const usePreviewMode: typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']
   const useProjectStore: typeof import('../../stores/projectStore')['useProjectStore']
@@ -140,6 +156,7 @@ declare global {
   const useRequestHeader: typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeader']
   const useRequestHeaders: typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeaders']
   const useRequestURL: typeof import('../../node_modules/nuxt/dist/app/composables/url')['useRequestURL']
+  const useResetForm: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useResetForm']
   const useRoute: typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRoute']
   const useRouteAnnouncer: typeof import('../../node_modules/nuxt/dist/app/composables/route-announcer')['useRouteAnnouncer']
   const useRouter: typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRouter']
@@ -170,7 +187,11 @@ declare global {
   const useServerSeoMeta: typeof import('../../node_modules/@unhead/vue')['useServerSeoMeta']
   const useSlots: typeof import('../../node_modules/vue')['useSlots']
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']
+  const useSubmitCount: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitCount']
+  const useSubmitForm: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitForm']
   const useTransitionState: typeof import('../../node_modules/vue')['useTransitionState']
+  const useValidateField: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateField']
+  const useValidateForm: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateForm']
   const watch: typeof import('../../node_modules/vue')['watch']
   const watchEffect: typeof import('../../node_modules/vue')['watchEffect']
   const watchPostEffect: typeof import('../../node_modules/vue')['watchPostEffect']
@@ -294,6 +315,7 @@ declare module 'vue' {
     readonly toRaw: UnwrapRef<typeof import('../../node_modules/vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('../../node_modules/vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('../../node_modules/vue')['toRefs']>
+    readonly toTypedSchema: UnwrapRef<typeof import('../../node_modules/@vee-validate/yup/dist/vee-validate-yup')['toTypedSchema']>
     readonly toValue: UnwrapRef<typeof import('../../node_modules/vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('../../node_modules/vue')['triggerRef']>
     readonly tryUseNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['tryUseNuxtApp']>
@@ -311,13 +333,27 @@ declare module 'vue' {
     readonly useElementScriptTrigger: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useElementScriptTrigger']>
     readonly useError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']>
+    readonly useField: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useField']>
+    readonly useFieldArray: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldArray']>
+    readonly useFieldError: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldError']>
+    readonly useFieldValue: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldValue']>
+    readonly useForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useForm']>
+    readonly useFormErrors: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormErrors']>
     readonly useFormKitContext: UnwrapRef<typeof import('../../node_modules/@formkit/vue')['useFormKitContext']>
     readonly useFormKitContextById: UnwrapRef<typeof import('../../node_modules/@formkit/vue')['useFormKitContextById']>
     readonly useFormKitNodeById: UnwrapRef<typeof import('../../node_modules/@formkit/vue')['useFormKitNodeById']>
+    readonly useFormValues: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormValues']>
     readonly useHead: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHeadSafe']>
     readonly useHydration: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']>
     readonly useId: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/id')['useId']>
+    readonly useIsFieldDirty: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldDirty']>
+    readonly useIsFieldTouched: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldTouched']>
+    readonly useIsFieldValid: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldValid']>
+    readonly useIsFormDirty: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormDirty']>
+    readonly useIsFormTouched: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormTouched']>
+    readonly useIsFormValid: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormValid']>
+    readonly useIsSubmitting: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsSubmitting']>
     readonly useLazyAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useLazyAsyncData']>
     readonly useLazyFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']>
     readonly useLink: UnwrapRef<typeof import('../../node_modules/vue-router/auto-routes')['useLink']>
@@ -326,6 +362,7 @@ declare module 'vue' {
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
     readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
+    readonly useOfferStore: UnwrapRef<typeof import('../../stores/offerStore')['useOfferStore']>
     readonly usePinia: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
     readonly useProjectStore: UnwrapRef<typeof import('../../stores/projectStore')['useProjectStore']>
@@ -334,6 +371,7 @@ declare module 'vue' {
     readonly useRequestHeader: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeader']>
     readonly useRequestHeaders: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeaders']>
     readonly useRequestURL: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/url')['useRequestURL']>
+    readonly useResetForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useResetForm']>
     readonly useRoute: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRoute']>
     readonly useRouteAnnouncer: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/route-announcer')['useRouteAnnouncer']>
     readonly useRouter: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRouter']>
@@ -364,7 +402,11 @@ declare module 'vue' {
     readonly useServerSeoMeta: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useServerSeoMeta']>
     readonly useSlots: UnwrapRef<typeof import('../../node_modules/vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
+    readonly useSubmitCount: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitCount']>
+    readonly useSubmitForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitForm']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
+    readonly useValidateField: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateField']>
+    readonly useValidateForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateForm']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchPostEffect']>
@@ -478,6 +520,7 @@ declare module '@vue/runtime-core' {
     readonly toRaw: UnwrapRef<typeof import('../../node_modules/vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('../../node_modules/vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('../../node_modules/vue')['toRefs']>
+    readonly toTypedSchema: UnwrapRef<typeof import('../../node_modules/@vee-validate/yup/dist/vee-validate-yup')['toTypedSchema']>
     readonly toValue: UnwrapRef<typeof import('../../node_modules/vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('../../node_modules/vue')['triggerRef']>
     readonly tryUseNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['tryUseNuxtApp']>
@@ -495,13 +538,27 @@ declare module '@vue/runtime-core' {
     readonly useElementScriptTrigger: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useElementScriptTrigger']>
     readonly useError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']>
+    readonly useField: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useField']>
+    readonly useFieldArray: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldArray']>
+    readonly useFieldError: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldError']>
+    readonly useFieldValue: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFieldValue']>
+    readonly useForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useForm']>
+    readonly useFormErrors: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormErrors']>
     readonly useFormKitContext: UnwrapRef<typeof import('../../node_modules/@formkit/vue')['useFormKitContext']>
     readonly useFormKitContextById: UnwrapRef<typeof import('../../node_modules/@formkit/vue')['useFormKitContextById']>
     readonly useFormKitNodeById: UnwrapRef<typeof import('../../node_modules/@formkit/vue')['useFormKitNodeById']>
+    readonly useFormValues: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormValues']>
     readonly useHead: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHeadSafe']>
     readonly useHydration: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']>
     readonly useId: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/id')['useId']>
+    readonly useIsFieldDirty: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldDirty']>
+    readonly useIsFieldTouched: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldTouched']>
+    readonly useIsFieldValid: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFieldValid']>
+    readonly useIsFormDirty: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormDirty']>
+    readonly useIsFormTouched: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormTouched']>
+    readonly useIsFormValid: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsFormValid']>
+    readonly useIsSubmitting: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsSubmitting']>
     readonly useLazyAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useLazyAsyncData']>
     readonly useLazyFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']>
     readonly useLink: UnwrapRef<typeof import('../../node_modules/vue-router/auto-routes')['useLink']>
@@ -510,6 +567,7 @@ declare module '@vue/runtime-core' {
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
     readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
+    readonly useOfferStore: UnwrapRef<typeof import('../../stores/offerStore')['useOfferStore']>
     readonly usePinia: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
     readonly useProjectStore: UnwrapRef<typeof import('../../stores/projectStore')['useProjectStore']>
@@ -518,6 +576,7 @@ declare module '@vue/runtime-core' {
     readonly useRequestHeader: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeader']>
     readonly useRequestHeaders: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeaders']>
     readonly useRequestURL: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/url')['useRequestURL']>
+    readonly useResetForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useResetForm']>
     readonly useRoute: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRoute']>
     readonly useRouteAnnouncer: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/route-announcer')['useRouteAnnouncer']>
     readonly useRouter: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRouter']>
@@ -548,7 +607,11 @@ declare module '@vue/runtime-core' {
     readonly useServerSeoMeta: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useServerSeoMeta']>
     readonly useSlots: UnwrapRef<typeof import('../../node_modules/vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
+    readonly useSubmitCount: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitCount']>
+    readonly useSubmitForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitForm']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
+    readonly useValidateField: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateField']>
+    readonly useValidateForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateForm']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchPostEffect']>
