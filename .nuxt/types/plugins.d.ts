@@ -23,7 +23,8 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/@nuxtjs/color-mode/dist/runtime/plugin.client").default> &
   InjectionType<typeof import("../../node_modules/@formkit/nuxt/dist/runtime/formkitSSRPlugin").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/dev-server-logs").default> &
-  InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used").default>
+  InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used").default> &
+  InjectionType<typeof import("../../plugins/fontawesome").default>
 
 declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }
