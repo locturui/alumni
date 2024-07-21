@@ -21,7 +21,9 @@ const clickHandle = (id) => {
 const store = useProjectStore()
 await store.fetchProjects()
 
-const projects = store.getProjects
+const projects = store.projects
+
+console.log(projects)
 </script>
 
 <style lang="sass" scoped>
