@@ -12,7 +12,7 @@ export const useProjectStore = defineStore({
                 const res = fetch('https://api.alumni-portal.ru/projects', {
                     credentials: "include",
                 })
-                if (response.ok) {
+                if (res.ok) {
                    const data = await res.json();
                    console.log(data);
                 }
