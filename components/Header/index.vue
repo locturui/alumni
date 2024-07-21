@@ -22,7 +22,7 @@
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/sign-in">Sign In</NuxtLink>
             </li>
             <li v-else>
-              <span>Sign Out</span>
+              <span class="link hover:text-[#40BA21] font-ibm dark:text-white" @click="auth.logout">Sign Out</span>
             </li>
         </ul>
         <div v-show="config.getMobile" class="icon" :class="{ 'icon-active': mobileNav }">
@@ -45,8 +45,11 @@
             <li v-if="route.name != 'sign-in' && route.name != 'sign-up'">
               <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/offers">Offers</NuxtLink>
             </li>
-            <li>
+            <li v-if="!auth.user">
               <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/sign-in">Sign In</NuxtLink>
+            </li>
+            <li v-else>
+              <span class="link hover:text-[#40BA21] font-ibm dark:text-white" @click="auth.logout">Sign Out</span>
             </li>
           </ul>
         </transition>
