@@ -158,7 +158,7 @@ const navigateToSignIn = () => {
     font-weight: 500
     color: #4A5568
 
-  .input
+  .input, .select
     margin-top: 0.25rem
     width: 100%
     padding: 0.5rem 1rem
