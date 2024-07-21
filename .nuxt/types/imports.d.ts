@@ -110,6 +110,7 @@ declare global {
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']
   const useAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']
   const useAttrs: typeof import('../../node_modules/vue')['useAttrs']
+  const useAuthStore: typeof import('../../stores/authStore')['useAuthStore']
   const useColorMode: typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']
   const useConfigStore: typeof import('../../stores/configStore')['useConfigStore']
   const useConsentScriptTrigger: typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useConsentScriptTrigger']
@@ -326,6 +327,7 @@ declare module 'vue' {
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('../../node_modules/vue')['useAttrs']>
+    readonly useAuthStore: UnwrapRef<typeof import('../../stores/authStore')['useAuthStore']>
     readonly useColorMode: UnwrapRef<typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']>
     readonly useConfigStore: UnwrapRef<typeof import('../../stores/configStore')['useConfigStore']>
     readonly useConsentScriptTrigger: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useConsentScriptTrigger']>
@@ -532,6 +534,7 @@ declare module '@vue/runtime-core' {
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('../../node_modules/vue')['useAttrs']>
+    readonly useAuthStore: UnwrapRef<typeof import('../../stores/authStore')['useAuthStore']>
     readonly useColorMode: UnwrapRef<typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']>
     readonly useConfigStore: UnwrapRef<typeof import('../../stores/configStore')['useConfigStore']>
     readonly useConsentScriptTrigger: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useConsentScriptTrigger']>

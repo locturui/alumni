@@ -61,7 +61,8 @@ import { useForm, ErrorMessage, Field } from 'vee-validate';
 import * as yup from 'yup';
 
 const router = useRouter();
-
+import { useAuthStore } from 'stores/authStore.js'
+const auth = useAuthStore()
 const validationSchema = yup.object({
   login: yup.string().email('Must be a valid email').required('Email is required'),
   password: yup.string().required('Password is required')
@@ -71,33 +72,9 @@ const { handleSubmit, values, errors } = useForm({
   validationSchema,
 });
 
-const snubmitHandler = handleSubmit((values) => {
-  console.log(values);
-});
-
 const submitHandler = handleSubmit(async (values) => {
-  try {
-    const response = await fetch('https://alumni-portal.ru/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: values.login,
-        password: values.password
-      })
-    })
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-    } else {
-      const errorData = await response.json();
-      console.error('Login failed', errorData);
-    }
-  } catch (error) {
-    console.error('Login error', error);
-  }
+  await auth.login(values.login, values.password);
+  await router.push('/')
 })
 const navigateToSignUp = () => {
   router.push('/sign-up');
