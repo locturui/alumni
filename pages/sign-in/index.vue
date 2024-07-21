@@ -89,16 +89,8 @@ const submitHandler = handleSubmit(async (values) => {
     })
 
     if (response.ok) {
-      // Read and process all headers (including possibly forbidden headers)
-      const authHeader = response.headers.get('Authorization');
-      if (authHeader) {
-        const token = authHeader.split(' ')[1];
-        console.log('JWT Token:', token);
-        // Save the token in localStorage or store it in a state management system
-        localStorage.setItem('token', token);
-      } else {
-        console.error('Authorization header not found');
-      }
+      const data = await response.json();
+      console.log(data);
     } else {
       const errorData = await response.json();
       console.error('Login failed', errorData);
