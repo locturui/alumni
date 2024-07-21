@@ -8,16 +8,21 @@ export const useProjectStore = defineStore({
     },
     actions: {
         async fetchProjects() {
-            try{
-                const res = fetch('https://api.alumni-portal.ru/projects', {
+            try {
+                const response = await fetch('https://api.alumni-portal.ru/projects', {
                     credentials: "include",
                 })
-                if (res.ok) {
-                   const data = await res.json();
-                   console.log(data);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    return data
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Project fetch failed');
                 }
             } catch (error) {
-                console.error('Fetch project error', error);
+                console.error('Fetch prj error', error);
+                throw error;
             }
         },
         addProject(project) {

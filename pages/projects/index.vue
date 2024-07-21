@@ -2,7 +2,7 @@
   <div class="p-4 mt-[6rem]">
     <h1 class="text-4xl font-bold text-center font-montserrat" style="color: #40BA21">All Projects</h1>
     <div class="mt-7 container flex flex-wrap gap-5 justify-around mx-auto">
-      <UICard v-for="project in projects" :key="project.ID" :image="project.url" :header="project.Name"
+      <UICard v-for="project in store.projects" :key="project.ID" :image="project.url" :header="project.Name"
         :description="project.Description" :project="project" @clicked="(id) => clickHandle(id)"/>
     </div>
   </div>
@@ -20,8 +20,6 @@ const clickHandle = (id) => {
 }
 const store = useProjectStore()
 await store.fetchProjects()
-
-const projects = store.projects
 
 console.log(projects)
 </script>
