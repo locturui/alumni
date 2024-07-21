@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('auth', {
 
                 if (response.ok) {
                     const data = await response.json();
-                    this.user = data.user;
+                    this.user = data;
                     return data;
                 } else {
                     const errorData = await response.json();
