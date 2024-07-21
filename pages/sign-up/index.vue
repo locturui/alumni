@@ -58,9 +58,8 @@
               as="select"
               :class="['select', 'font-ibm', { valid: !errors.role && values.role }]"
           >
-            <option value="Monthly">Monthly</option>
-            <option value="Quarterly">Quarterly</option>
-            <option value="Yearly">Yearly</option>
+            <option value="Student">Student</option>
+            <option value="Alumni">Alumnus</option>
           </Field>
           <ErrorMessage name="role" class="error-message font-ibm" />
         </div>
