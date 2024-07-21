@@ -19,6 +19,7 @@ const clickHandle = (id) => {
   router.push('/projects/' + id)
 }
 const store = useProjectStore()
+await store.fetchProjects()
 
 const projects = store.getProjects
 </script>
