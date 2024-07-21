@@ -9,11 +9,11 @@ export const useAuthStore = defineStore('auth', {
             try {
                 const response = await fetch('https://api.alumni-portal.ru/auth/login', {
                     method: 'POST',
+                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ email, password }),
-                    credentials: 'include',
                 });
 
                 if (response.ok) {
