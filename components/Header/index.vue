@@ -6,14 +6,14 @@
             <li>
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/">Home</NuxtLink>
             </li>
-            <li v-if="auth.user">
+            <li v-if="auth.user && auth.user.verified">
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/projects">Projects</NuxtLink>
             </li>
-            <li v-if="auth.user">
-                <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/user">Profile</NuxtLink>
+            <li v-if="auth.user && auth.user.verified">
+                <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/offers">Offers</NuxtLink>
             </li>
             <li v-if="auth.user">
-                <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/offers">Offers</NuxtLink>
+              <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/user">Profile</NuxtLink>
             </li>
             <li v-if="!auth.user">
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/sign-in">Sign In</NuxtLink>
