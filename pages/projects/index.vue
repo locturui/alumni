@@ -11,12 +11,6 @@
 
 
 <script setup>
-definePageMeta
-({
-  middleware
-      : 'auth'
-})
-
 import { useProjectStore } from '/stores/projectStore.js'
 
 const store = useProjectStore()
