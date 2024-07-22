@@ -28,6 +28,3 @@ const projects = store.getProjects
 
 
 </style>
-
-
-</style>
