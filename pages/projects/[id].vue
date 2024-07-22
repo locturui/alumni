@@ -40,6 +40,7 @@ import { useProjectStore } from '/stores/projectStore.js'
 import { storeToRefs } from 'pinia'
 const route = useRoute()
 const store = useProjectStore()
+await store.fetchProjects()
 const { projects } = storeToRefs(store)
 const currentProject = ref(null)
 
