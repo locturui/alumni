@@ -31,6 +31,12 @@
 </template>
 
 <script setup>
+definePageMeta
+({
+  middleware
+      : 'auth'
+})
+
 import { useProjectStore } from '/stores/projectStore.js'
 import { storeToRefs } from 'pinia'
 const route = useRoute()

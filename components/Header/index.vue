@@ -6,16 +6,16 @@
             <li>
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/">Home</NuxtLink>
             </li>
-            <li v-if="route.name != 'sign-in' && route.name != 'sign-up'">
+            <li v-if="auth.user">
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/projects">Projects</NuxtLink>
             </li>
-            <li v-if="route.name != 'sign-in' && route.name != 'sign-up'">
+            <li v-if="auth.user">
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/volunteer">Volunteer</NuxtLink>
             </li>
-            <li v-if="route.name != 'sign-in' && route.name != 'sign-up' && auth.user">
+            <li v-if="auth.user">
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/user">Profile</NuxtLink>
             </li>
-            <li v-if="route.name != 'sign-in' && route.name != 'sign-up'">
+            <li v-if="auth.user">
                 <NuxtLink class="link hover:text-[#40BA21] font-ibm dark:text-white" to="/offers">Offers</NuxtLink>
             </li>
             <li v-if="!auth.user">

@@ -9,6 +9,11 @@
 </template>
 
 <script setup>
+definePageMeta
+({
+  middleware: ['auth'],
+})
+
 const router = useRouter();
 const clickHandle = (id) => {
   console.log(id)
