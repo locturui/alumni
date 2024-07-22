@@ -108,6 +108,8 @@ import { useForm, ErrorMessage, Field } from 'vee-validate';
 import * as yup from 'yup';
 import {useProjectStore} from "~/stores/projectStore.js";
 
+const route = useRoute()
+
 const projects = useProjectStore()
 const validationSchema = yup.object({
   firstName: yup.string().required('First Name is required'),
@@ -125,7 +127,7 @@ const { handleSubmit, values, errors } = useForm({
 
 const submitHandler = handleSubmit(async (values) => {
   try {
-    const res = await fetch('https://api.alumni-portal.ru/donation', {
+    const res = await fetch('https://api.alumni-portal.ru/donation/' + route.params.id, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify({
