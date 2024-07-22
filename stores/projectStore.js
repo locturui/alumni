@@ -14,7 +14,16 @@ export const useProjectStore = defineStore({
                 })
                 if (response.ok) {
                     const data = await response.json();
-                    this.projects = data
+                    for (const project of data) {
+                        this.addProject({
+                            id: project.ID,
+                            url: 'inno.png',
+                            title: project.Name,
+                            desc: project.Description,
+                            collected: project.Collected,
+                            goal: project.Goal,
+                        })
+                    }
                 } else {
                     const errorData = await response.json();
                     throw new Error(errorData.message || 'Project fetch failed');
