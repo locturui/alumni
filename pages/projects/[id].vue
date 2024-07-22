@@ -21,7 +21,7 @@
 
     <div class="container flex flex-col sm:flex-row justify-between">
       <UIDonationForm />
-      <div class="wrapper sm:ml-5 mt-5 sm:mt-0 flex flex-wrap max-w-">
+      <div class="wrapper sm:ml-5 mt-5 sm:mt-0">
         <Ranking :donators="donators"/>
       </div>
     </div>
