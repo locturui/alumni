@@ -23,7 +23,7 @@ const auth = useAuthStore()
 <!--          <span>{{project.Status}}</span>-->
 <!--        </div>-->
 <!--      </div>-->
-      <div v-else class="wrapper ml-5">
+      <div class="wrapper ml-5">
         <span class="text-xl font-ibm" style="color: #40BA21">No projects yet</span>
       </div>
     </div>
