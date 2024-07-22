@@ -42,7 +42,7 @@ export const useProjectStore = defineStore({
     getters: {
         getProjects: state => state.projects,
         getVerifiedProjects: state => {
-            return state.projects.filter(p => p.Status === 'Verified')
+            return state.projects.filter(p => p.Status === 'Accepted')
         },
         getProjectById: (state) => {
             return (id) => state.projects.findOne(p => p.id === id)},
