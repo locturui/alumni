@@ -5,7 +5,7 @@ import ProposalForm from "~/components/ProposalForm.vue";
 
 const store = useProjectStore()
 const auth = useAuthStore()
-const projects = store.getProjectByUserId(auth.user.ID)
+//const projects = store.getProjectByUserId(auth.user.ID)
 
 </script>
 
@@ -16,13 +16,13 @@ const projects = store.getProjectByUserId(auth.user.ID)
       <div class="wrapper w-1/2">
         <ProposalForm />
       </div>
-      <div v-if="projects.length > 0" class="wrapper flex flex-col w-1/2">
-        <div v-for="project in projects">
-          <span>{{project.title}}</span>
-          <span>{{project.desc}}</span>
-          <span>{{project.Status}}</span>
-        </div>
-      </div>
+<!--      <div v-if="projects.length > 0" class="wrapper flex flex-col w-1/2">-->
+<!--        <div v-for="project in projects">-->
+<!--          <span>{{project.title}}</span>-->
+<!--          <span>{{project.desc}}</span>-->
+<!--          <span>{{project.Status}}</span>-->
+<!--        </div>-->
+<!--      </div>-->
       <div v-else class="wrapper ml-5">
         <span class="text-xl font-ibm" style="color: #40BA21">No projects yet</span>
       </div>
