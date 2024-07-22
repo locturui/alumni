@@ -3,7 +3,7 @@ export const useProjectStore = defineStore({
     id: 'project-store',
     state: () => {
         return {
-            projects: null
+            projects: []
         }
     },
     actions: {
