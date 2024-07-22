@@ -43,9 +43,8 @@ const toggleMobileNav = () => {
   mobileNav.value = !mobileNav.value
 }
 
-onBeforeMount(() => {
-  auth.validate()
-})
+await auth.validate()
+
 
 onMounted(() => {
   window.addEventListener('resize', checkScreen)

@@ -18,9 +18,11 @@
 </template>
 
 <script setup>
+const res = await fetch('https://api.alumni-portal.ru')
+
 const donators = [
-  { id: 1, name: "Donator Full Name", amount: 200, avatar: "" },
-  { id: 2, name: "Donator Full Name", amount: 200, avatar: "" },
+  { id: 1, name: "Donater Full Name", amount: 200, avatar: "" },
+  { id: 2, name: "Donater Full Name", amount: 200, avatar: "" },
   // Add more donators as needed
 ];
 </script>
