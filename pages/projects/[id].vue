@@ -20,7 +20,8 @@
 
 
     <div class="container flex flex-col sm:flex-row justify-between">
-      <UIDonationForm />
+      <UIDonationForm v-if="auth.user.role == 'Alumni'"/>
+      <VolunteerForm v-if="auth.user.role == 'Student'"/>
       <div class="wrapper sm:ml-5 mt-5 sm:mt-0">
         <h2 class="text-xl font-semibold font-montserrat text-[#40BA21]">Top Contributors</h2>
         <Ranking :donators="donators"/>
@@ -31,6 +32,8 @@
 </template>
 
 <script setup>
+import {useAuthStore} from "~/stores/authStore.js";
+
 definePageMeta
 ({
   middleware
@@ -41,6 +44,7 @@ import { useProjectStore } from '/stores/projectStore.js'
 import { storeToRefs } from 'pinia'
 const route = useRoute()
 const store = useProjectStore()
+const auth = useAuthStore()
 await store.fetchProjects()
 const { projects } = storeToRefs(store)
 const currentProject = ref(null)

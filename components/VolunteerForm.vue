@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <Form @submit="submitHandler" class="form grid-cols-1">
-      <h2 class="title font-montserrat">Make a Donation</h2>
+      <h2 class="title font-montserrat">Volunteer Application</h2>
       
       <div class="field col-span-2 sm:col-span-1">
         <label for="firstName" class="label font-ibm">First Name</label>
@@ -40,61 +40,71 @@
       </div>
 
       <div class="field col-span-2 sm:col-span-1">
-        <label for="phone" class="label font-ibm">Phone number</label>
+        <label for="phone" class="label font-ibm">Phone Number</label>
         <Field
           name="phone"
           as="input"
           type="tel"
-          placeholder="Phone number"
+          placeholder="Phone Number"
           :class="['input', 'font-ibm', { valid: !errors.phone && values.phone }]"
         />
         <ErrorMessage name="phone" class="font-ibm error-message" />
       </div>
 
       <div class="field col-span-2 sm:col-span-1">
-        <label for="amount" class="label font-ibm">Amount</label>
+        <label for="role" class="label font-ibm">Desired Role</label>
         <Field
-          name="amount"
+          name="role"
           as="input"
-          type="number"
-          placeholder="Please enter your donation amount"
-          :class="['input', 'font-ibm', 'green-text', { valid: !errors.amount && values.amount }]"
+          type="text"
+          placeholder="Role"
+          :class="['input', 'font-ibm', { valid: !errors.role && values.role }]"
         />
-        <ErrorMessage name="amount" class="error-message font-ibm" />
+        <ErrorMessage name="role" class="error-message font-ibm" />
       </div>
 
       <div class="field col-span-2 sm:col-span-1">
-        <label for="paymentMethod" class="label font-ibm">Choose the payment method</label>
+        <label for="track" class="label font-ibm">Track</label>
         <Field
-          name="paymentMethod"
-          as="select"
-          :class="['select', 'font-ibm', { valid: !errors.paymentMethod && values.paymentMethod }]"
-        >
-          <option value="Credit/Debit card">Credit/Debit card</option>
-          <option value="PayPal">PayPal</option>
-          <option value="Bank Transfer">Bank Transfer</option>
-        </Field>
-        <ErrorMessage name="paymentMethod" class="error-message font-ibm" />
+          name="track"
+          as="input"
+          type="text"
+          placeholder="Track"
+          :class="['input', 'font-ibm', { valid: !errors.track && values.track }]"
+        />
+        <ErrorMessage name="track" class="error-message font-ibm" />
       </div>
 
-      <div class="field col-span-2 sm:col-span-1 full-width">
-        <label for="recurringDonation" class="label font-ibm">Recurring donation</label>
+      <div class="field col-span-2 sm:col-span-1">
+        <label for="stack" class="label font-ibm">Stack</label>
         <Field
-          name="recurringDonation"
+          name="stack"
+          as="input"
+          type="text"
+          placeholder="Stack"
+          :class="['input', 'font-ibm', { valid: !errors.stack && values.stack }]"
+        />
+        <ErrorMessage name="stack" class="error-message font-ibm" />
+      </div>
+
+      <div class="field col-span-2 sm:col-span-1">
+        <label for="availability" class="label font-ibm">Availability</label>
+        <Field
+          name="availability"
           as="select"
-          :class="['select', 'font-ibm', { valid: !errors.recurringDonation && values.recurringDonation }]"
+          :class="['select', 'font-ibm', { valid: !errors.availability && values.availability }]"
         >
-          <option value="Monthly">Monthly</option>
-          <option value="Quarterly">Quarterly</option>
-          <option value="Yearly">Yearly</option>
+          <option value="Full-time">Full-time</option>
+          <option value="Part-time">Part-time</option>
+          <option value="Occasional">Occasional</option>
         </Field>
-        <ErrorMessage name="recurringDonation" class="error-message font-ibm" />
+        <ErrorMessage name="availability" class="error-message font-ibm" />
       </div>
 
       <div class="button-wrapper">
         <UIButton
           btn_type="submit"
-          text="Donate"
+          text="Apply"
         />
       </div>
     </Form>
@@ -105,46 +115,24 @@
 import { ref, computed } from 'vue';
 import { useForm, ErrorMessage, Field } from 'vee-validate';
 import * as yup from 'yup';
-import {useProjectStore} from "~/stores/projectStore.js";
 
-const projects = useProjectStore()
 const validationSchema = yup.object({
   firstName: yup.string().required('First Name is required'),
   lastName: yup.string().required('Last Name is required'),
   email: yup.string().email('Must be a valid email').required('E-mail is required'),
   phone: yup.string().required('Phone number is required'),
-  amount: yup.number().required('Amount is required').positive('Must be a positive number'),
-  paymentMethod: yup.string().required('Payment method is required'),
-  recurringDonation: yup.string().required('Recurring donation is required')
+  role: yup.string().required('Role is required'),
+  track: yup.string().required('Track is required'),
+  stack: yup.string().required('Stack is required'),
+  availability: yup.string().required('Availability is required')
 });
 
 const { handleSubmit, values, errors } = useForm({
   validationSchema,
 });
 
-const submitHandler = handleSubmit(async (values) => {
-  try {
-    const res = await fetch('https://api.alumni-portal.ru/donation', {
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify({
-        Amount: values.amount,
-        PaymentMethod: values.paymentMethod,
-        RecurringDonation: values.recurringDonation,
-      }),
-    })
-
-    if (res.ok) {
-      await projects.fetchProjects()
-      navigateTo('/projects')
-    } else {
-      const errorData = await res.json();
-      throw new Error(errorData.message || 'Donate failed');
-    }
-  } catch (error) {
-    console.error('Donate error', error);
-    throw error;
-  }
+const submitHandler = handleSubmit((values) => {
+  console.log(values);
 });
 </script>
 
@@ -153,7 +141,7 @@ const submitHandler = handleSubmit(async (values) => {
   background-color: white;
   padding: 1.75rem;
   width: 100%;
-  max-width: 46rem;
+  max-width: 48rem;
   border-radius: 0.5rem;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
 }
