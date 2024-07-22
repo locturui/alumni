@@ -14,8 +14,7 @@ export const useProjectStore = defineStore({
                 })
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(data);
-                    return data
+                    this.projects = data
                 } else {
                     const errorData = await response.json();
                     throw new Error(errorData.message || 'Project fetch failed');
