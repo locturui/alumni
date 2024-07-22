@@ -27,5 +27,10 @@ const projects = store.getVerifiedProjects
 
 <style lang="sass" scoped>
 
-
+.wrapper
+  background-color: white
+  padding: 1.75rem
+  border-radius: 0.5rem
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1)
+  max-height: min-content
 </style>
