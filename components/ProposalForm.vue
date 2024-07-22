@@ -63,6 +63,7 @@ import * as yup from 'yup';
 import {useProjectStore} from "~/stores/projectStore.js";
 
 const projects = useProjectStore()
+await projects.fetchProjects()
 
 const validationSchema = yup.object({
   projectName: yup.string().required('Project Name is required'),
