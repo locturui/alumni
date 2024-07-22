@@ -12,7 +12,7 @@ const projects = store.getProjects.filter(project => project.user.ID === auth.us
 <template>
   <div class="p-4 mt-[6rem]">
     <h1 class="text-4xl font-bold text-center font-montserrat" style="color: #40BA21">My Projects</h1>
-    <div class="mt-7 container flex mx-auto">
+    <div class="mt-7 container flex justify-around mx-auto">
       <div class="wrapper w-1/2">
         <ProposalForm />
       </div>
