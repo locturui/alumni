@@ -98,6 +98,12 @@ const user = reactive({
   image: '',
 });
 
+user.name = auth.user.name
+user.lastName = auth.user.lastName
+user.email = auth.user.email
+user.role = auth.user.role
+user.description = ''
+
 function saveProfile() {
   // Save profile logic here
   console.log('Profile saved', user);
