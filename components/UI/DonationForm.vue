@@ -70,9 +70,9 @@
           as="select"
           :class="['select', 'font-ibm', { valid: !errors.paymentMethod && values.paymentMethod }]"
         >
-          <option value="Credit/Debit card">Credit/Debit card</option>
+          <option value="CreditCard">Credit/Debit card</option>
           <option value="PayPal">PayPal</option>
-          <option value="Bank Transfer">Bank Transfer</option>
+          <option value="BankTransfer">Bank Transfer</option>
         </Field>
         <ErrorMessage name="paymentMethod" class="error-message font-ibm" />
       </div>
@@ -84,6 +84,7 @@
           as="select"
           :class="['select', 'font-ibm', { valid: !errors.recurringDonation && values.recurringDonation }]"
         >
+          <option value="OneTime">Monthly</option>
           <option value="Monthly">Monthly</option>
           <option value="Quarterly">Quarterly</option>
           <option value="Yearly">Yearly</option>
@@ -128,9 +129,9 @@ const submitHandler = handleSubmit(async (values) => {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify({
-        Amount: values.amount,
-        PaymentMethod: values.paymentMethod,
-        RecurringDonation: values.recurringDonation,
+        amount: values.amount,
+        payment_method: values.paymentMethod,
+        recurring_donation: values.recurringDonation,
       }),
     })
 
