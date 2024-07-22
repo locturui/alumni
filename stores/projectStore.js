@@ -8,6 +8,7 @@ export const useProjectStore = defineStore({
     },
     actions: {
         async fetchProjects() {
+            this.projects = []
             try {
                 const response = await fetch('https://api.alumni-portal.ru/projects', {
                     credentials: "include",
