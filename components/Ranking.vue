@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="ml-4">
-        <div class=" font-ibm text-[#40BA21] font-semibold">{{ donator.User.Name }}</div>
+        <div class=" font-ibm text-[#40BA21] font-semibold">{{ donator.User.Name + ' ' + donator.User.LastName}}</div>
         <div class="text-gray-500 font-ibm" >{{ donator.Amount }} roubles</div>
       </div>
     </div>
