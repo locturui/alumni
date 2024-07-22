@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row flex-wrap">
-    <div v-for="donator in donators" :key="donator.ID" class="flex items-center bg-white shadow-md rounded-lg">
+    <div v-for="donator in donators" :key="donator.ID" class="flex items-center bg-white shadow-md rounded-lg p-4 m-1">
       <div class="relative">
         <div class="icon absolute -top-4 -left-4 bg-white text-white font-ibm rounded-full w-8 h-8 flex items-center justify-center">
           <font-awesome-icon :icon="['fas', 'medal']" class="w-full h-full object-contain" style="color: #40BA21;" />

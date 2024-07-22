@@ -22,6 +22,7 @@
     <div class="container flex flex-col sm:flex-row justify-between">
       <UIDonationForm />
       <div class="wrapper sm:ml-5 mt-5 sm:mt-0">
+        <h2 class="text-xl font-semibold font-montserrat text-[#40BA21]">Top Contributors</h2>
         <Ranking :donators="donators"/>
       </div>
     </div>
@@ -62,4 +63,5 @@ const daysLeft = 30;
   padding: 1.75rem
   border-radius: 0.5rem
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1)
+  max-height: min-content
 </style>
