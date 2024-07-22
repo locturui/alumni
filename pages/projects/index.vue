@@ -12,14 +12,17 @@
 
 <script setup>
 import { useProjectStore } from '/stores/projectStore.js'
+const store = useProjectStore()
+
+onBeforeMount(() => {
+  store.fetchProjects()
+})
 
 const router = useRouter();
 const clickHandle = (id) => {
   console.log(id)
   router.push('/projects/' + id)
 }
-const store = useProjectStore()
-await store.fetchProjects()
 
 </script>
 
