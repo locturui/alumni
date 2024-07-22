@@ -5,7 +5,7 @@ import ProposalForm from "~/components/ProposalForm.vue";
 
 const store = useProjectStore()
 const auth = useAuthStore()
-const projects = store.getProjects.filter(project => project.user.ID === auth.user.ID)
+const projects = store.getProjectByUserId(auth.user.ID)
 
 </script>
 
