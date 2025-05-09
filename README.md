@@ -1,75 +1,63 @@
-# Nuxt 3 Minimal Starter
+# Alumni Portal
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A full‑stack Nuxt 3 application for managing an university’s alumni — member profiles, events, announcements and more.
+Built with **Vue 3 + Nuxt 3**, **Pinia** state, **Vuetify 3** components, **Tailwind CSS** utilities and a rich form/validation layer via **FormKit** & **Vee‑Validate**.
 
-## Setup
+---
+## Tech Stack
 
-Make sure to install the dependencies:
+* **Core frameworks:** Nuxt 3, Vue 3, TypeScript
+* **UI kit:** Vuetify
+* **Styling:** Tailwind 3 + Sass
+* **State:** Pinia
+* **Forms & Validation:** FormKit, Vee‑Validate
+* **Icons:** Font Awesome 6
+* **Utilities:** @nuxtjs/color‑mode, PostCSS, Autoprefixer
+* **Tooling:** Vite, Prettier
 
-```bash
-# npm
-npm install
+---
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Quick Start
 
 ```bash
-# npm
-npm run dev
+# 1. Clone the repo
+git clone https://github.com/locturui/alumni.git
+cd alumni
 
-# pnpm
-pnpm run dev
+# 2. Install dependencies
+npm install        
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
+# 4. Run the dev server
+pnpm dev            
 ```
 
-## Production
+---
 
-Build the application for production:
+## Environment Variables
 
-```bash
-# npm
-npm run build
+| Key                | Purpose                                     | Example                   |
+| ------------------ | ------------------------------------------- | ------------------------- |
+| `NUXT_API_BASE`    | Base URL for backend REST / GraphQL service | `https://api.example.com` |
+| `NUXT_AUTH_SECRET` | JWT / session secret                        | `super‑secret‑string`     |
 
-# pnpm
-pnpm run build
+Create an `.env.local` and add the required keys
 
-# yarn
-yarn build
+---
 
-# bun
-bun run build
-```
+## Roadmap
 
-Locally preview production build:
+* [ ] Authentication (magic‑link & OAuth)
+* [ ] Alumni directory search & filters
+* [ ] Events calendar & RSVP flow
+* [ ] Admin dashboard & analytics
+      
+---
 
-```bash
-# npm
-npm run preview
+## Credits
 
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+* [Nuxt 3](https://nuxt.com/)
+* [Vuetify](https://vuetifyjs.com/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [FormKit](https://formkit.com/)
+* [Vee‑Validate](https://vee-validate.logaretm.com/)
+* [Font Awesome](https://fontawesome.com/)
